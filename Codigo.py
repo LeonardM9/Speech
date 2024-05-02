@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import webbrowser as wb
+
+from speech_recognition.speech_recognition.exceptions import WaitTimeoutError
 def fn_speech_recognition():
     sr.Microphone(device_index = 0)
     print(f"MICs Found on this Computer: \n {sr.Microphone.list_microphone_names()}")
@@ -20,8 +22,6 @@ def fn_speech_recognition():
             url = "https://www.google.com/search?q="
             search_url  = url+phrase
             wb.open(search_url)
-        except TimeoutException as msg:
-            print(msg)
         except WaitTimeoutError:
             print("listening timed out while waiting for phrase to start")
             quit()
