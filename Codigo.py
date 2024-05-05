@@ -36,5 +36,6 @@ def fn_speech_recognition():
         else:
             print("Your results will appear in the default browser. Good bye for now...")
 
+#Para que funcione el codigo
 while True:
     fn_speech_recognition()
