@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import subprocess
 import pyautogui
+import webbrowser as wb
 
 recognizer = sr.Recognizer()
 proceso = None
@@ -14,6 +15,10 @@ def ejecutar_comando(comando):
         pyautogui.write(saludo)
     elif "cerrar bloc de notas" in comando: 
         proceso.terminate()
+    elif "Busca en Google Youtube" in comando:
+        print(f"Did you just say: {phrase} ?")
+        url = "https://www.google.com/search?q=Youtube"
+        wb.open(url)
         
 def escucha_comando(): 
     with sr.Microphone() as source: 
