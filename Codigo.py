@@ -35,3 +35,6 @@ def fn_speech_recognition():
             print("Could not understand what you've requested.")
         else:
             print("Your results will appear in the default browser. Good bye for now...")
+
+while True:
+    fn_speech_recognition()
