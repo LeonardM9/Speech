@@ -12,12 +12,9 @@ def ejecutar_comando(comando):
         proceso = subprocess.Popen(["notepad.exe"])
     elif "saludo" in comando:
         pyautogui.write(saludo)
-    elif "cerrar notepad" in comando: 
+    elif "cerrar bloc de notas" in comando: 
         proceso.terminate()
-    while "salir del programa" in comando:
-        break
         
-
 def escucha_comando(): 
     with sr.Microphone() as source: 
         print("En que puedo ayudarte")
