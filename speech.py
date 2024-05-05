@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import subprocess
 import pyautogui
-import webbrowser
+import sys
 
 recognizer = sr.Recognizer()
 proceso = None
@@ -11,10 +11,15 @@ def ejecutar_comando(comando):
     global proceso
     if "abrir bloc de notas" in comando:
         proceso = subprocess.Popen(["notepad.exe"])
+    if "abrir google" in comando:
+        proceso = subprocess.Popen(["chrome.exe"])
     elif "saludo" in comando:
         pyautogui.write(saludo)
     elif "cerrar bloc de notas" in comando: 
         proceso.terminate()
+    elif "cerrar programa" in comando:
+        sys.exit()   
+    
         
 def escucha_comando(): 
     with sr.Microphone() as source: 
@@ -30,3 +35,5 @@ def escucha_comando():
 
 while True:
     escucha_comando()
+
+
