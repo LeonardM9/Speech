@@ -8,20 +8,23 @@ saludo = """ hola buenas"""
 
 def ejecutar_comando(comando):
     global proceso
-    if "open notepad" in comando:
+    if "abrir bloc de notas" in comando:
         proceso = subprocess.Popen(["notepad.exe"])
     elif "saludo" in comando:
         pyautogui.write(saludo)
     elif "cerrar notepad" in comando: 
         proceso.terminate()
+    while "salir del programa" in comando:
+        break
+        
 
-def escucha_comando():
+def escucha_comando(): 
     with sr.Microphone() as source: 
         print("En que puedo ayudarte")
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
     try:
-        comando = recognizer.recognize_bing(audio, language="en-US")
+        comando = recognizer.recognize_google(audio, language="es-ES")
         print(f"comando reconocido: {comando}")
         ejecutar_comando(comando)
     except sr.UnknownValueError:

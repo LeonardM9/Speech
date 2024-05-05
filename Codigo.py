@@ -1,7 +1,10 @@
+# My simple Speech Recognition Demonstration Routine 😊
+# Made with ❤️ in Python 3 by Alvison Hunter - March 1st, 2020
+# JavaScript, Python and Web Development tips at: https://bit.ly/3p9hpqj
+# -----------------------------------------------------------------------
+# Importing the libraries that will do the magic part 🐵
 import speech_recognition as sr
 import webbrowser as wb
-
-from speech_recognition.speech_recognition.exceptions import WaitTimeoutError
 def fn_speech_recognition():
     sr.Microphone(device_index = 0)
     print(f"MICs Found on this Computer: \n {sr.Microphone.list_microphone_names()}")
@@ -22,7 +25,9 @@ def fn_speech_recognition():
             url = "https://www.google.com/search?q="
             search_url  = url+phrase
             wb.open(search_url)
-        except WaitTimeoutError:
+        except TimeoutException as msg: # type: ignore
+            print(msg)
+        except WaitTimeoutError: # type: ignore
             print("listening timed out while waiting for phrase to start")
             quit()
         # speech is unintelligible
